@@ -437,3 +437,95 @@ function prepararProducto(codigo) {
     document.getElementById("panelEditorProducto").style.display = "block";
     return true;
 }
+
+/* USUARIOS DE EJEMPLO: reutiliza un único formulario para crear y editar.
+   Los cambios se revisan, pero no modifican las tres cuentas que permiten ingresar. */
+function prepararUsuario(cuenta) {
+    if (rolActual != "Administrador") { return false; }
+    document.getElementById("formUsuario").reset();
+    document.getElementById("errorNombreUsuario").innerHTML = "";
+    document.getElementById("errorApellidosUsuario").innerHTML = "";
+    document.getElementById("errorCorreoUsuario").innerHTML = "";
+    document.getElementById("errorPerfilUsuario").innerHTML = "";
+    document.getElementById("resultadoUsuario").innerHTML = "";
+    document.getElementById("tituloEditorUsuario").innerHTML = "Nuevo usuario";
+
+    if (cuenta == "admin") {
+        document.getElementById("nombreUsuario").value = "Camila";
+        document.getElementById("apellidosUsuario").value = "Soto";
+        document.getElementById("correoUsuario").value = "admin@duoc.cl";
+        document.getElementById("perfilUsuario").value = "Administrador";
+    } else if (cuenta == "vendedor") {
+        document.getElementById("nombreUsuario").value = "Diego";
+        document.getElementById("apellidosUsuario").value = "Rojas";
+        document.getElementById("correoUsuario").value = "vendedor@duoc.cl";
+        document.getElementById("perfilUsuario").value = "Vendedor";
+    } else if (cuenta == "cliente") {
+        document.getElementById("nombreUsuario").value = "Andrea";
+        document.getElementById("apellidosUsuario").value = "Muñoz";
+        document.getElementById("correoUsuario").value = "cliente@gmail.com";
+        document.getElementById("perfilUsuario").value = "Cliente";
+    } else if (cuenta != "nuevo") {
+        return false;
+    }
+if (cuenta != "nuevo") {
+        document.getElementById("tituloEditorUsuario").innerHTML = "Editar usuario";
+    }
+    ocultarPaneles();
+    document.getElementById("panelEditorUsuario").style.display = "block";
+    return true;
+}
+
+/* VALIDACIÓN DE USUARIOS: exige nombre, apellidos, correo admitido y uno de los tres perfiles.
+   Cada campo se revisa al escribir o salir; el botón revisa todos antes de dar el resultado. */
+function validarCampoUsuario(campo) {
+    if (rolActual != "Administrador") { return false; }
+    var valido = true;
+    document.getElementById("resultadoUsuario").innerHTML = "";
+    if (campo == "nombre") {
+        var nombre = document.getElementById("nombreUsuario").value;
+        document.getElementById("errorNombreUsuario").innerHTML = "";
+        if (!tieneTexto(nombre) || nombre.length > 50) {
+            document.getElementById("errorNombreUsuario").innerHTML = "Escribe un nombre de hasta 50 caracteres.";
+            valido = false;
+        }
+    }
+    if (campo == "apellidos") {
+        var apellidos = document.getElementById("apellidosUsuario").value;
+        document.getElementById("errorApellidosUsuario").innerHTML = "";
+        if (!tieneTexto(apellidos) || apellidos.length > 100) {
+            document.getElementById("errorApellidosUsuario").innerHTML = "Escribe los apellidos (máximo 100 caracteres).";
+            valido = false;
+        }
+    }
+    if (campo == "correo") {
+        var correo = document.getElementById("correoUsuario").value;
+        document.getElementById("errorCorreoUsuario").innerHTML = "";
+        if (!correoValido(correo)) {
+            document.getElementById("errorCorreoUsuario").innerHTML = "Usa @duoc.cl, @profesor.duoc.cl o @gmail.com (máx. 100).";
+            valido = false;
+        }
+    }
+    if (campo == "perfil") {
+        var perfil = document.getElementById("perfilUsuario").value;
+        document.getElementById("errorPerfilUsuario").innerHTML = "";
+        if (perfil != "Administrador" && perfil != "Vendedor" && perfil != "Cliente") {
+            document.getElementById("errorPerfilUsuario").innerHTML = "Selecciona uno de los tres perfiles.";
+            valido = false;
+        }
+    }
+    return valido;
+}
+
+function validarUsuario() {
+    if (rolActual != "Administrador") { return false; }
+    var valido = true;
+    if (!validarCampoUsuario("nombre")) { valido = false; }
+    if (!validarCampoUsuario("apellidos")) { valido = false; }
+    if (!validarCampoUsuario("correo")) { valido = false; }
+    if (!validarCampoUsuario("perfil")) { valido = false; }
+    if (valido) {
+        document.getElementById("resultadoUsuario").innerHTML = "Datos correctos. No se ha creado ni modificado una cuenta; los accesos de prueba siguen iguales.";
+    }
+    return valido;
+}
