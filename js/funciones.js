@@ -139,3 +139,70 @@ function validarContacto() {
     }
     return valido;
 }
+
+/* Revisa el campo de Solicitar hora que se está editando y actualiza su aviso debajo.
+   Exige nombre, correo, servicio, fecha y jornada; la fecha se comprueba como elegida, sin consultar disponibilidad.
+   También borra el resultado anterior cuando la persona modifica los datos. */
+function validarCampoHora(campo) {
+    var valido = true;
+    document.getElementById("resultadoHora").innerHTML = "";
+    if (campo == "nombre") {
+        var nombre = document.getElementById("nombreHora").value;
+        document.getElementById("errorNombreHora").innerHTML = "";
+        if (!tieneTexto(nombre) || nombre.length > 100) {
+            document.getElementById("errorNombreHora").innerHTML = "Escribe tu nombre (máximo 100 caracteres).";
+            valido = false;
+        }
+    }
+    if (campo == "correo") {
+        var correo = document.getElementById("correoHora").value;
+        document.getElementById("errorCorreoHora").innerHTML = "";
+        if (!correoValido(correo)) {
+            document.getElementById("errorCorreoHora").innerHTML = "Usa @duoc.cl, @profesor.duoc.cl o @gmail.com (máx. 100).";
+            valido = false;
+        }
+    }
+    if (campo == "servicio") {
+        var servicio = document.getElementById("servicioHora").value;
+        document.getElementById("errorServicioHora").innerHTML = "";
+        if (servicio == "") {
+            document.getElementById("errorServicioHora").innerHTML = "Selecciona un servicio nutricional.";
+            valido = false;
+        }
+    }
+    if (campo == "fecha") {
+        var fecha = document.getElementById("fechaHora").value;
+        document.getElementById("errorFechaHora").innerHTML = "";
+        if (fecha == "") {
+            document.getElementById("errorFechaHora").innerHTML = "Selecciona una fecha preferida.";
+            valido = false;
+        }
+    }
+    if (campo == "jornada") {
+        var jornada = document.getElementById("jornadaHora").value;
+        document.getElementById("errorJornadaHora").innerHTML = "";
+        if (jornada == "") {
+            document.getElementById("errorJornadaHora").innerHTML = "Selecciona una jornada.";
+            valido = false;
+        }
+    }
+    return valido;
+}
+
+/* Al pulsar el botón o Enter en Solicitar hora, revisa todos los campos aunque alguno tenga errores.
+   El resultado final confirma los datos de la demostración; no reserva una atención. */
+function validarHora() {
+    var valido = true;
+    document.getElementById("resultadoHora").innerHTML = "";
+    if (!validarCampoHora("nombre")) { valido = false; }
+    if (!validarCampoHora("correo")) { valido = false; }
+    if (!validarCampoHora("servicio")) { valido = false; }
+    if (!validarCampoHora("fecha")) { valido = false; }
+    if (!validarCampoHora("jornada")) { valido = false; }
+    if (valido) {
+        document.getElementById("resultadoHora").innerHTML = "Datos correctos. La solicitud no se ha enviado ni guardado; no hay una hora reservada.";
+    }
+    return valido;
+}
+
+
