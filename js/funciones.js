@@ -206,3 +206,78 @@ function validarHora() {
 }
 
 
+/* Formulario de administracion.html.
+   Esta validación revisa un producto en tiempo real, pero no lo guarda ni modifica la tabla.
+   Se usan los id de los campos para leer los datos y los id de error para escribir cada mensaje.
+   isFinite comprueba que un valor sea numérico y finito; stock % 1 detecta una parte decimal. */
+function validarCampoProducto(campo) {
+    if (rolActual != "Administrador") { return false; }
+    var valido = true;
+    document.getElementById("resultadoProducto").innerHTML = "";
+
+    if (campo == "codigo") {
+        var codigo = document.getElementById("codigoProducto").value;
+        document.getElementById("errorCodigoProducto").innerHTML = "";
+        if (!tieneTexto(codigo) || codigo.length < 3) {
+            document.getElementById("errorCodigoProducto").innerHTML = "Escribe un código de al menos 3 caracteres.";
+            valido = false;
+        }
+    }
+
+    if (campo == "nombre") {
+        var nombre = document.getElementById("nombreProducto").value;
+        document.getElementById("errorNombreProducto").innerHTML = "";
+        if (!tieneTexto(nombre) || nombre.length > 100) {
+            document.getElementById("errorNombreProducto").innerHTML = "Escribe un nombre de hasta 100 caracteres.";
+            valido = false;
+        }
+    }
+
+    if (campo == "precio") {
+        var precio = document.getElementById("precioProducto").value;
+        document.getElementById("errorPrecioProducto").innerHTML = "";
+        if (!tieneTexto(precio) || !isFinite(precio) || precio < 0) {
+            document.getElementById("errorPrecioProducto").innerHTML = "Escribe un precio igual o mayor que 0.";
+            valido = false;
+        }
+    }
+
+    if (campo == "stock") {
+        var stock = document.getElementById("stockProducto").value;
+        document.getElementById("errorStockProducto").innerHTML = "";
+        if (!tieneTexto(stock) || !isFinite(stock) || stock < 0 || stock % 1 != 0) {
+            document.getElementById("errorStockProducto").innerHTML = "Escribe un stock entero igual o mayor que 0.";
+            valido = false;
+        }
+    }
+
+    if (campo == "categoria") {
+        var categoria = document.getElementById("categoriaProducto").value;
+        document.getElementById("errorCategoriaProducto").innerHTML = "";
+        if (categoria == "") {
+            document.getElementById("errorCategoriaProducto").innerHTML = "Selecciona una categoría.";
+            valido = false;
+        }
+    }
+
+    return valido;
+}
+
+/* Al presionar Revisar cambio se comprueban todos los campos.
+   Si son correctos, se muestra una confirmación que explica que el cambio es simulado. */
+function validarProducto() {
+    if (rolActual != "Administrador") { return false; }
+    var valido = true;
+    document.getElementById("resultadoProducto").innerHTML = "";
+
+    if (!validarCampoProducto("codigo")) { valido = false; }
+    if (!validarCampoProducto("nombre")) { valido = false; }
+    if (!validarCampoProducto("precio")) { valido = false; }
+    if (!validarCampoProducto("stock")) { valido = false; }
+    if (!validarCampoProducto("categoria")) { valido = false; }
+
+    if (valido) {
+        document.getElementById("resultadoProducto").innerHTML = "Datos correctos. El cambio fue revisado, pero no se ha guardado.";
+    }
+    return valido;
+}
