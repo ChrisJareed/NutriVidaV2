@@ -75,3 +75,67 @@ function telefonoValido(telefono) {
     return true;
 }
 
+/* Revisa el campo de Contacto que se está editando y muestra su error debajo.
+   Exige nombre y correo válidos, motivo y mensaje de hasta 500 caracteres; el teléfono es opcional.
+   Al editar, también borra el resultado anterior para que no quede una confirmación desactualizada. */
+function validarCampoContacto(campo) {
+    var valido = true;
+    document.getElementById("resultadoContacto").innerHTML = "";
+    if (campo == "nombre") {
+        var nombre = document.getElementById("nombreContacto").value;
+        document.getElementById("errorNombreContacto").innerHTML = "";
+        if (!tieneTexto(nombre) || nombre.length > 100) {
+            document.getElementById("errorNombreContacto").innerHTML = "Escribe tu nombre (máximo 100 caracteres).";
+            valido = false;
+        }
+    }
+    if (campo == "correo") {
+        var correo = document.getElementById("correoContacto").value;
+        document.getElementById("errorCorreoContacto").innerHTML = "";
+        if (!correoValido(correo)) {
+            document.getElementById("errorCorreoContacto").innerHTML = "Usa @duoc.cl, @profesor.duoc.cl o @gmail.com (máx. 100).";
+            valido = false;
+        }
+    }
+    if (campo == "telefono") {
+        var telefono = document.getElementById("telefonoContacto").value;
+        document.getElementById("errorTelefonoContacto").innerHTML = "";
+        if (telefono != "" && !telefonoValido(telefono)) {
+            document.getElementById("errorTelefonoContacto").innerHTML = "Usa 9 dígitos o deja el teléfono vacío.";
+            valido = false;
+        }
+    }
+    if (campo == "motivo") {
+        var motivo = document.getElementById("motivoContacto").value;
+        document.getElementById("errorMotivoContacto").innerHTML = "";
+        if (motivo == "") {
+            document.getElementById("errorMotivoContacto").innerHTML = "Selecciona un motivo.";
+            valido = false;
+        }
+    }
+    if (campo == "mensaje") {
+        var mensaje = document.getElementById("mensajeContacto").value;
+        document.getElementById("errorMensajeContacto").innerHTML = "";
+        if (!tieneTexto(mensaje) || mensaje.length > 500) {
+            document.getElementById("errorMensajeContacto").innerHTML = "Escribe un mensaje (máximo 500 caracteres).";
+            valido = false;
+        }
+    }
+    return valido;
+}
+
+/* Al pulsar el botón o Enter en Contacto, revisa todos los campos y muestra sus errores juntos.
+   Si todo cumple las reglas, escribe el resultado al final del formulario sin enviar el mensaje. */
+function validarContacto() {
+    var valido = true;
+    document.getElementById("resultadoContacto").innerHTML = "";
+    if (!validarCampoContacto("nombre")) { valido = false; }
+    if (!validarCampoContacto("correo")) { valido = false; }
+    if (!validarCampoContacto("telefono")) { valido = false; }
+    if (!validarCampoContacto("motivo")) { valido = false; }
+    if (!validarCampoContacto("mensaje")) { valido = false; }
+    if (valido) {
+        document.getElementById("resultadoContacto").innerHTML = "Datos correctos. El mensaje no se ha enviado ni guardado.";
+    }
+    return valido;
+}
