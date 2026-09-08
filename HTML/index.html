@@ -47,6 +47,91 @@
          El h1 presenta el tema principal; los h2 y h3 organizan las secciones y sus contenidos.
     -->
     <main class="contenedor">
+        <!-- PORTADA DE INICIO
+             Presenta la propuesta de NutriVida, los enlaces al catálogo y a Nosotros, y la fotografía principal.
+             texto-portada agrupa el texto; imagen-portada controla la foto. El CSS los apila en pantallas pequeñas.
+        -->
+        <section class="portada">
+            <div class="texto-portada">
+                <p class="etiqueta">UN ESPACIO PARA CUIDARTE</p>
+                <h1>Tu bienestar empieza con una buena nutrición.</h1>
+                <p>Te acompañamos con consultas y planes pensados para tus objetivos, tu rutina y tu manera de vivir.</p>
+                <p class="accion"><a class="boton" href="productos.html">Explorar el catálogo</a></p>
+                <p><a href="nosotros.html">Conoce NutriVida</a></p>
+            </div>
+            <img class="imagen-portada" src="../imagenes/metabolica.jpg" alt="Plato con huevo, palta, tomates y verduras variadas">
+        </section>
+        <!-- DATOS DESTACADOS DE LA CLÍNICA
+             Muestra el año de inicio, la cantidad de profesionales y las opciones del catálogo.
+             Son textos escritos en HTML; el CSS los distribuye según el ancho de la pantalla.
+        -->
+        <section class="datos-clinica">
+            <p><strong>Desde 2016</strong><br>en Temuco</p>
+            <p><strong>4 nutricionistas</strong><br>distintas áreas de atención</p>
+            <p><strong>18 opciones</strong><br>en nuestro catálogo</p>
+        </section>
+        <section>
+            <p class="etiqueta">ENCUENTRA TU PUNTO DE PARTIDA</p>
+            <h2>Un plan para cada etapa.</h2>
+            <p>Conoce dos opciones y revisa sus detalles antes de solicitar orientación.</p>
+            <!-- TARJETAS DE LA PORTADA
+                 Muestran dos opciones del catálogo mediante imagen, nombre, descripción y precio.
+                 Ver detalles abre productos.html y baja al id de la tarjeta correspondiente, como cn001 o pl001.
+            -->
+            <div class="tarjetas">
+                <article class="tarjeta">
+                    <img src="../imagenes/metabolica.jpg" alt="Plato con huevo, palta y verduras">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">CONSULTA · PRESENCIAL · 50 MIN</p>
+                        <h3>Primera consulta nutricional</h3>
+                        <p class="descripcion">Evaluación inicial, revisión de antecedentes y diseño del primer plan alimenticio.</p>
+                        <p class="precio">$35.000</p>
+                        <p><a class="boton boton-secundario" href="productos.html#cn001">Ver detalles</a></p>
+                    </div>
+                </article>
+                <article class="tarjeta">
+                    <img src="../imagenes/control-peso.jpg" alt="Ensalada con hojas verdes, palta, granada y semillas">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">PLAN ESPECIALIZADO · 1 MES</p>
+                        <h3>Plan pérdida de peso</h3>
+                        <p class="descripcion">Primera consulta, un control quincenal, plan alimenticio personalizado y seguimiento.</p>
+                        <p class="precio">$65.000</p>
+                        <p><a class="boton boton-secundario" href="productos.html#pl001">Ver detalles</a></p>
+                    </div>
+                </article>
+            </div>
+            <p class="nota">Valores referenciales del catálogo de demostración.</p>
+            <p><a href="productos.html">Ver todos los productos y planes</a></p>
+        </section>
+        <!-- INFORMACIÓN DESTACADA
+             Agrupa este contenido en un recuadro de fondo verde claro. La línea amarilla se dibuja con border-left en el CSS.
+        -->
+        <section class="destacado">
+            <p class="etiqueta">ATENCIÓN PARA DISTINTAS NECESIDADES</p>
+            <h2>Un equipo, distintos objetivos.</h2>
+            <p>NutriVida cuenta con cuatro nutricionistas y atiende en Temuco desde 2016.</p>
+            <ul>
+                <li>Control de peso y enfermedades metabólicas.</li>
+                <li>Nutrición deportiva.</li>
+                <li>Alimentación vegetariana y vegana.</li>
+            </ul>
+            <p><a href="servicios.html">Conocer las áreas de atención</a></p>
+        </section>
+        <!-- ACCESO AL FORMULARIO
+             Bloque de cierre con fondo verde oscuro y un enlace a Solicitar hora.
+             El enlace parece un botón por sus clases, pero su función es abrir el archivo indicado en href.
+        -->
+        <section class="panel-verde">
+            <p class="etiqueta">CERCA DE TI</p>
+            <h2>Da el primer paso.</h2>
+            <ol>
+                <li>Revisa los servicios y planes.</li>
+                <li>Completa el formulario con tus preferencias.</li>
+                <li>Revisa tus datos y los mensajes del formulario.</li>
+            </ol>
+            <p class="accion"><a class="boton boton-claro" href="solicitar-hora.html">Solicitar hora</a></p>
+            <p class="nota">El formulario es una demostración: no registra una cita real.</p>
+        </section>
     </main>
     <!-- PIE DE PÁGINA
          Cierra el sitio con la marca, enlaces al catálogo, blog y contacto, y los nombres de Christopher y Bárbara.
