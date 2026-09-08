@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- CONFIGURACIÓN DE LA PÁGINA
+     Reúne la codificación para tildes y ñ, el ajuste inicial de pantalla, el título y el icono de la pestaña.
+     Las ocho páginas cargan ../css/style.css: ../ sale de la carpeta HTML para buscar los estilos compartidos.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar hora | NutriVida</title>
+    <link rel="icon" href="../imagenes/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- FRANJA SUPERIOR
+         Es el texto que se ve sobre el encabezado. La clase franja le da el fondo verde y centra su contenido.
+    -->
+    <p class="franja">TEMUCO · NUTRICIÓN Y BIENESTAR DESDE 2016</p>
+    <!-- ENCABEZADO DE NUTRIVIDA
+         Agrupa el logo, el nombre y la descripción de la clínica. Pulsar la marca lleva a Inicio.
+         contenedor alinea el bloque; marca y bajada permiten dar distintos tamaños al nombre y a la descripción.
+    -->
+    <header>
+        <div class="contenedor">
+            <a class="enlace-marca" href="index.html">
+                <img class="logo" src="../imagenes/logo.svg" alt="">
+                <span class="marca">NutriVida</span>
+            </a>
+            <p class="bajada">Clínica de nutrición · Temuco</p>
+        </div>
+    </header>
+    <!-- MENÚ ENTRE PÁGINAS
+         Los enlaces abren los HTML de esta misma carpeta. El texto de cada enlace es su nombre visible en el menú.
+         Solo el enlace de la página abierta tiene actual: el CSS lo destaca con negrita y una línea amarilla.
+    -->
+    <nav>
+        <div class="contenedor">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="productos.html">Productos</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="solicitar-hora.html" class="actual">Solicitar hora</a>
+        </div>
+    </nav>
+    <!-- CONTENIDO PRINCIPAL
+         Aquí está la información propia de esta página. contenedor limita su ancho y lo centra con el resto del sitio.
+         El h1 presenta el tema principal; los h2 y h3 organizan las secciones y sus contenidos.
+    -->
+    <main class="contenedor">
+        <!-- PRESENTACIÓN DE LA SECCIÓN
+             Se ve debajo del menú: una etiqueta pequeña, el título principal y una breve descripción de lo que contiene la página.
+        -->
+        <section class="encabezado-pagina">
+            <p class="etiqueta">TU PRÓXIMO PASO</p>
+            <h1>Solicitar hora</h1>
+            <p>Elige una atención y cuéntanos qué fecha y jornada prefieres.</p>
+        </section>
+        <!-- FORMULARIO DE DEMOSTRACIÓN
+             Este recuadro reúne las instrucciones, los campos y los avisos de revisión.
+             Los datos solo se comprueban en la página: no se envían, no se guardan y no generan una reserva.
+        -->
+        <section class="panel-formulario">
+            <h2>Prepara tu solicitud</h2>
+            <p class="nota">Formulario de demostración: revisa los datos, pero no los envía ni guarda. No reserva una hora real.</p>
+            <p class="ayuda-formulario">Todos los campos son obligatorios. Puedes revisar las opciones en nuestro <a href="productos.html">catálogo</a>.</p>
+            <!-- REVISIÓN AL ENVIAR
+                 onsubmit llama a validarHora() al pulsar el botón o usar Enter desde un campo de una línea.
+                 return false evita el envío y la recarga; novalidate deja los mensajes de revisión a nuestro JavaScript.
+            -->
+            <form onsubmit="validarHora(); return false;" novalidate>
+                <!-- ESTRUCTURA DE LOS CAMPOS
+                     Cada fila agrupa un label, un campo y un párrafo de error. for conecta la etiqueta con el id del campo.
+                     JavaScript usa ese id para leer value y el id del párrafo para mostrar el aviso.
+                     oninput revisa al escribir, onblur al salir y onchange al elegir una opción. Los límites de largo aparecen en maxlength.
+                -->
+                <div class="fila-formulario">
+                    <label for="nombreHora">Nombre completo</label>
+                    <input type="text" id="nombreHora" name="nombre" maxlength="100" required onblur="validarCampoHora('nombre')" oninput="validarCampoHora('nombre')">
+                    <p class="error" id="errorNombreHora"></p>
+                </div>
+                <div class="fila-formulario">
+                    <label for="correoHora">Correo electrónico</label>
+<input type="email" id="correoHora" name="correo" maxlength="100" required onblur="validarCampoHora('correo')" oninput="validarCampoHora('correo')">
+                    <p class="ayuda-formulario" id="ayudaCorreoHora">Usa un correo de duoc.cl, profesor.duoc.cl o gmail.com.</p>
+                    <p class="error" id="errorCorreoHora"></p>
+                </div>
+                <div class="fila-formulario">
+                    <label for="servicioHora">Atención que te interesa</label>
+                    <select id="servicioHora" name="servicio" required onchange="validarCampoHora('servicio')" onblur="validarCampoHora('servicio')">
+                        <option value="">Selecciona una atención</option>
+                        <option value="Primera consulta nutricional">Primera consulta nutricional</option>
+                        <option value="Control nutricional (seguimiento)">Control nutricional (seguimiento)</option>
+                        <option value="Control nutricional quincenal">Control nutricional quincenal</option>
+                        <option value="Teleconsulta nutricional">Teleconsulta nutricional</option>
+                        <option value="Consulta de urgencia / reagendada">Consulta de urgencia / reagendada</option>
+                        <option value="Plan pérdida de peso (1 mes)">Plan pérdida de peso (1 mes)</option>
+                        <option value="Plan pérdida de peso (3 meses)">Plan pérdida de peso (3 meses)</option>
+                        <option value="Plan nutrición deportiva (1 mes)">Plan nutrición deportiva (1 mes)</option>
+                        <option value="Plan control diabetes / hipertensión">Plan control diabetes / hipertensión</option>
+                        <option value="Plan alimentación vegetariana/vegana">Plan alimentación vegetariana/vegana</option>
+                        <option value="Plan alimentación infantil (2-12 años)">Plan alimentación infantil (2-12 años)</option>
+                        <option value="Antropometría completa">Antropometría completa</option>
+                        <option value="Bioimpedanciometría">Bioimpedanciometría</option>
+                        <option value="Encuesta de hábitos alimentarios">Encuesta de hábitos alimentarios</option>
+                        <option value="Análisis de exámenes de laboratorio">Análisis de exámenes de laboratorio</option>
+                        <option value="Taller de alimentación saludable">Taller de alimentación saludable</option>
+                        <option value="Taller de cocina nutritiva">Taller de cocina nutritiva</option>
+                        <option value="Taller nutrición para deportistas">Taller nutrición para deportistas</option>
+                    </select>
+                    <p class="error" id="errorServicioHora"></p>
+                </div>
+                <div class="fila-formulario">
+                    <label for="fechaHora">Fecha preferida</label>
+                    <input type="date" id="fechaHora" name="fecha" required onblur="validarCampoHora('fecha')" oninput="validarCampoHora('fecha')">
+                    <p class="error" id="errorFechaHora"></p>
+                </div>
+                <div class="fila-formulario">
+                    <label for="jornadaHora">Jornada preferida</label>
+                    <select id="jornadaHora" name="jornada" required onchange="validarCampoHora('jornada')" onblur="validarCampoHora('jornada')">
+                        <option value="">Selecciona una jornada</option>
+                        <option value="Mañana">Mañana</option>
+                        <option value="Tarde">Tarde</option>
+                    </select>
+                    <p class="error" id="errorJornadaHora"></p>
+                </div>
+                <!-- BOTÓN Y RESULTADO
+                     El botón activa la revisión completa. Si todos los campos cumplen, aparece una confirmación en el párrafo de resultado.
+                     Al editar un campo, JavaScript limpia la confirmación anterior para que no quede un éxito desactualizado.
+                -->
+                <button class="boton" type="submit">Revisar solicitud</button>
+                <p class="resultado" id="resultadoHora"></p>
+            </form>
+        </section>
+    </main>
+    <!-- PIE DE PÁGINA
+         Cierra el sitio con la marca, enlaces al catálogo, blog y contacto, y los nombres de Christopher y Bárbara.
+         Se repite en las ocho páginas y comparte sus estilos mediante style.css.
+    -->
+    <footer>
+        <div class="contenedor">
+            <p class="marca-pie">NutriVida</p>
+            <p>Asesoría nutricional personalizada · Temuco</p>
+            <p><a href="productos.html">Consultas y planes</a> · <a href="blog.html">Nuestro blog</a> · <a href="contacto.html">Contacto</a> · <a href="administracion.html">Acceso</a></p>
+            <p class="creditos">Proyecto académico DSY1104 · Christopher Villa y Bárbara Tolorza</p>
+        </div>
+    </footer>
+    <!-- CONEXIÓN CON LAS VALIDACIONES
+         Carga funciones.js desde la carpeta js. Las funciones leen los campos y escriben los mensajes de error o confirmación.
+         Se conecta al final para que los elementos del formulario ya existan cuando se utilicen.
+    -->
+    <script src="../js/funciones.js"></script>
+</body>
+</html>
