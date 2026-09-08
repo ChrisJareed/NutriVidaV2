@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- CONFIGURACIÓN DE LA PÁGINA
+     Reúne la codificación para tildes y ñ, el ajuste inicial de pantalla, el título y el icono de la pestaña.
+     Las ocho páginas cargan ../css/style.css: ../ sale de la carpeta HTML para buscar los estilos compartidos.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | NutriVida</title>
+    <link rel="icon" href="../imagenes/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- FRANJA SUPERIOR
+         Es el texto que se ve sobre el encabezado. La clase franja le da el fondo verde y centra su contenido.
+    -->
+    <p class="franja">TEMUCO · NUTRICIÓN Y BIENESTAR DESDE 2016</p>
+    <!-- ENCABEZADO DE NUTRIVIDA
+         Agrupa el logo, el nombre y la descripción de la clínica. Pulsar la marca lleva a Inicio.
+         contenedor alinea el bloque; marca y bajada permiten dar distintos tamaños al nombre y a la descripción.
+    -->
+    <header>
+        <div class="contenedor">
+            <a class="enlace-marca" href="index.html">
+                <img class="logo" src="../imagenes/logo.svg" alt="">
+                <span class="marca">NutriVida</span>
+            </a>
+            <p class="bajada">Clínica de nutrición · Temuco</p>
+        </div>
+    </header>
+    <!-- MENÚ ENTRE PÁGINAS
+         Los enlaces abren los HTML de esta misma carpeta. El texto de cada enlace es su nombre visible en el menú.
+         Solo el enlace de la página abierta tiene actual: el CSS lo destaca con negrita y una línea amarilla.
+    -->
+    <nav>
+        <div class="contenedor">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html" class="actual">Nosotros</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="productos.html">Productos</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="solicitar-hora.html">Solicitar hora</a>
+        </div>
+    </nav>
+    <!-- CONTENIDO PRINCIPAL
+         Aquí está la información propia de esta página. contenedor limita su ancho y lo centra con el resto del sitio.
+         El h1 presenta el tema principal; los h2 y h3 organizan las secciones y sus contenidos.
+    -->
+    <main class="contenedor">
+        <!-- PRESENTACIÓN DE LA SECCIÓN
+             Se ve debajo del menú: una etiqueta pequeña, el título principal y una breve descripción de lo que contiene la página.
+        -->
+        <section class="encabezado-pagina">
+            <p class="etiqueta">NUESTRA CLÍNICA</p>
+            <h1>Nutrición con sentido humano.</h1>
+            <p>Desde 2016 acompañamos a nuestros pacientes en Temuco, Región de La Araucanía.</p>
+        </section>
+        <!-- PRESENTACIÓN DE LA CLÍNICA
+             Reúne una fotografía y la descripción de NutriVida. El CSS los coloca juntos en computador y uno debajo del otro en teléfono.
+        -->
+        <section class="presentacion-clinica">
+            <img class="imagen-clinica" src="../imagenes/vegetariana.jpg" alt="Ensalada vegetariana con garbanzos, palta y tomates">
+            <div class="texto-clinica">
+                <p class="etiqueta">UN EQUIPO QUE TE ACOMPAÑA</p>
+                <h2>Distintos enfoques, un mismo compromiso.</h2>
+                <p>NutriVida es una clínica de nutrición integrada por cuatro nutricionistas. Atiende a personas con objetivos de control de peso, necesidades metabólicas, nutrición deportiva y alimentación vegetariana o vegana.</p>
+                <p>La clínica atiende aproximadamente a 60 pacientes por semana, con controles cada quince días o cada mes, según cada proceso.</p>
+                <p><a href="servicios.html">Revisa las áreas de atención</a></p>
+            </div>
+        </section>
+        <section>
+            <p class="etiqueta">NUESTRA FORMA DE ACOMPAÑARTE</p>
+            <h2>Conocer, orientar y acompañar.</h2>
+            <!-- TABLA DE TIPOS DE ATENCIÓN
+                 Compara cada tipo de atención con su propósito. thead contiene los títulos y tbody las filas de información.
+                 Cada tr es una fila; th identifica una cabecera y td un dato. El contenedor permite desplazar la tabla si no cabe.
+            -->
+            <div class="tabla-contenedor">
+                <table>
+                    <caption>Opciones que encontrarás en el catálogo</caption>
+                    <thead>
+                        <tr><th>Tipo de atención</th><th>Propósito</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Consulta inicial</td><td>Conocer los antecedentes y definir el primer plan alimenticio.</td></tr>
+                        <tr><td>Controles de seguimiento</td><td>Revisar los avances y ajustar el plan vigente.</td></tr>
+                        <tr><td>Evaluaciones</td><td>Recopilar información sobre hábitos y estado nutricional.</td></tr>
+                        <tr><td>Talleres grupales</td><td>Compartir conocimientos y actividades sobre alimentación.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <!-- INFORMACIÓN DESTACADA
+             Agrupa este contenido en un recuadro de fondo verde claro. La línea amarilla se dibuja con border-left en el CSS.
+        -->
+        <!-- EQUIPO DE LA CLÍNICA
+             Presenta a las cuatro nutricionistas de NutriVida y sus áreas de atención.
+             Los nombres de los estudiantes quedan solamente en los créditos del pie de página. -->
+        <section class="destacado">
+            <h2>Nuestro equipo</h2>
+            <p>NutriVida cuenta con cuatro nutricionistas que trabajan en distintas áreas:</p>
+            <ul>
+                <li><strong>Camila Soto:</strong> control de peso y hábitos saludables.</li>
+                <li><strong>Daniela Rojas:</strong> enfermedades metabólicas.</li>
+                <li><strong>Valentina Muñoz:</strong> nutrición deportiva.</li>
+                <li><strong>Fernanda Silva:</strong> alimentación vegetariana y vegana.</li>
+            </ul>
+        </section>
+    </main>
+    <!-- PIE DE PÁGINA
+         Cierra el sitio con la marca, enlaces al catálogo, blog y contacto, y los nombres de Christopher y Bárbara.
+         Se repite en las ocho páginas y comparte sus estilos mediante style.css.
+    -->
+    <footer>
+        <div class="contenedor">
+            <p class="marca-pie">NutriVida</p>
+            <p>Asesoría nutricional personalizada · Temuco</p>
+            <p><a href="productos.html">Consultas y planes</a> · <a href="blog.html">Nuestro blog</a> · <a href="contacto.html">Contacto</a> · <a href="administracion.html">Acceso</a></p>
+            <p class="creditos">Proyecto académico DSY1104 · Christopher Villa y Bárbara Tolorza</p>
+        </div>
+    </footer>
+</body>
+</html>
