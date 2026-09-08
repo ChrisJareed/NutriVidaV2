@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | NutriVida</title>
+    <link rel="icon" href="../imagenes/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    
+    <!-- FRANJA SUPERIOR
+         Es el texto que se ve sobre el encabezado. La clase franja le da el fondo verde y centra su contenido.
+    -->
+    <p class="franja">TEMUCO · NUTRICIÓN Y BIENESTAR DESDE 2016</p>
+    <!-- ENCABEZADO DE NUTRIVIDA
+         Agrupa el logo, el nombre y la descripción de la clínica. Pulsar la marca lleva a Inicio.
+         contenedor alinea el bloque; marca y bajada permiten dar distintos tamaños al nombre y a la descripción.
+    -->
+    <header>
+        <div class="contenedor">
+            <a class="enlace-marca" href="index.html">
+                <img class="logo" src="../imagenes/logo.svg" alt="">
+                <span class="marca">NutriVida</span>
+            </a>
+            <p class="bajada">Clínica de nutrición · Temuco</p>
+        </div>
+    </header>
+    <!-- MENÚ ENTRE PÁGINAS 
+              Los enlaces abren los HTML de esta misma carpeta. El texto de cada enlace es su nombre visible en el menú.
+         Solo el enlace de la página abierta tiene actual: el CSS lo destaca con negrita y una línea amarilla.
+    -->
+    <nav>
+        <div class="contenedor">
+            <a href="index.html" class="actual">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="productos.html">Productos</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="solicitar-hora.html">Solicitar hora</a>
+        </div>
+    </nav>
+    <!-- CONTENIDO PRINCIPAL
+         Aquí está la información propia de esta página. contenedor limita su ancho y lo centra con el resto del sitio.
+         El h1 presenta el tema principal; los h2 y h3 organizan las secciones y sus contenidos.
+    -->
+    <main class="contenedor">
+    </main>
+    <!-- PIE DE PÁGINA
+         Cierra el sitio con la marca, enlaces al catálogo, blog y contacto, y los nombres de Christopher y Bárbara.
+         Se repite en las ocho páginas y comparte sus estilos mediante style.css.
+    -->
+    <footer>
+        <div class="contenedor">
+            <p class="marca-pie">NutriVida</p>
+            <p>Asesoría nutricional personalizada · Temuco</p>
+            <p><a href="productos.html">Consultas y planes</a> · <a href="blog.html">Nuestro blog</a> · <a href="contacto.html">Contacto</a> · <a href="administracion.html">Acceso</a></p>
+            <p class="creditos">Proyecto académico DSY1104 · Christopher Villa y Bárbara Tolorza</p>
+        </div>
+    </footer>
+</body>
+</html>
+
