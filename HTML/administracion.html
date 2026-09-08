@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- CONFIGURACIÓN: conserva los estilos, las imágenes y el JavaScript del proyecto. -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso | NutriVida</title>
+    <link rel="icon" href="../imagenes/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <p class="franja">VISTA DE DEMOSTRACIÓN · NUTRIVIDA</p>
+    <header>
+        <div class="contenedor">
+            <a class="enlace-marca" href="index.html">
+                <img class="logo" src="../imagenes/logo.svg" alt="">
+                <span class="marca">NutriVida</span>
+            </a>
+            <p class="bajada">Acceso al sitio</p>
+        </div>
+    </header>
+    <!-- NAVEGACIÓN PÚBLICA: el sitio puede recorrerse sin iniciar el acceso de prueba. -->
+    <nav>
+        <div class="contenedor">
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Catálogo</a>
+            <a href="administracion.html" class="actual">Acceso</a>
+        </div>
+    </nav>
+    <main class="contenedor">
+        <section class="encabezado-pagina">
+            <p class="etiqueta">NUTRIVIDA</p>
+            <h1>Acceso por perfil</h1>
+            <p>Usa una cuenta de prueba para ver sus opciones. Esta demostración no guarda datos ni protege información real.</p>
+        </section>
+
+        <!-- ACCESO: valida correo y contraseña. El rol se obtiene de la cuenta, no de una
+             opción elegida por quien entra. Los errores aparecen debajo de los campos. -->
+        <section class="panel-formulario" id="panelAcceso">
+            <h2>Ingresar</h2>
+            <form id="formAcceso" onsubmit="validarAcceso(); return false;" novalidate>
+                    <div class="fila-formulario">
+                        <label for="correoAcceso">Correo</label>
+                        <input type="email" id="correoAcceso" maxlength="100" required oninput="validarCampoAcceso('correo')" onblur="validarCampoAcceso('correo')">
+                        <p class="error" id="errorCorreoAcceso"></p>
+                    </div>
+                    <div class="fila-formulario">
+                        <label for="claveAcceso">Contraseña</label>
+                        <input type="password" id="claveAcceso" maxlength="10" required oninput="validarCampoAcceso('clave')" onblur="validarCampoAcceso('clave')">
+                        <p class="error" id="errorClaveAcceso"></p>
+                    </div>
+                <p class="ayuda-formulario">Contraseña de entre 4 y 10 caracteres.</p>
+                <button class="boton" type="submit">Ingresar</button>
+                <p class="error" id="errorAcceso"></p>
+            </form>
+            <h3>Cuentas de prueba</h3>
+            <ul class="cuentas-prueba">
+                <li>Administrador: <strong>admin@duoc.cl</strong></li>
+                <li>Vendedor: <strong>vendedor@duoc.cl</strong></li>
+                <li>Cliente: <strong>cliente@gmail.com</strong></li>
+            </ul>
+            <p class="nota">Contraseña para las tres: <strong>nutrivida</strong>. No uses datos personales.</p>
+        </section>
+
+        <!-- CONTENIDO POR ROL: inicia oculto. JavaScript muestra el menú permitido y una sección
+             a la vez. Todo sigue en este HTML; al recargar, el acceso vuelve al estado inicial. -->
+        <div id="zonaAcceso" class="oculto">
+            <p class="resultado" id="resultadoAcceso"></p>
+            <div class="menu-gestion">
+                <button class="boton oculto" id="menuProductos" type="button" onclick="mostrarPanel('productos')">Productos</button>
+                <button class="boton oculto" id="menuUsuarios" type="button" onclick="mostrarPanel('usuarios')">Usuarios</button>
+                <button class="boton oculto" id="menuSolicitudes" type="button" onclick="mostrarPanel('solicitudes')">Solicitudes</button>
+                <button class="boton boton-secundario" type="button" onclick="cerrarAcceso()">Salir</button>
+            </div>
+
+            <!-- PRODUCTOS: administrador y vendedor ven el listado y los detalles del catálogo.
+                 Solo el administrador ve el bloque con los botones de creación y edición. -->
+            <section id="panelProductos" class="oculto">
+                <h2>Productos</h2>
+                <p class="nota">Listado de ejemplo. Los nombres llevan al detalle publicado en el catálogo.</p>
+                <div class="tabla-contenedor">
+                    <table>
+                        <caption>Consultas y planes de NutriVida</caption>
+                        <thead><tr><th>Código</th><th>Nombre y detalle</th><th>Precio</th></tr></thead>
+                        <tbody>
+                            <tr><td>CN001</td><td><a href="productos.html#cn001">Primera consulta nutricional</a></td><td>$35.000</td></tr>
+                            <tr><td>PL001</td><td><a href="productos.html#pl001">Plan pérdida de peso (1 mes)</a></td><td>$65.000</td></tr>
+                            <tr><td>EV001</td><td><a href="productos.html#ev001">Antropometría completa</a></td><td>$18.000</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="menu-gestion oculto" id="accionesProductos">
+                    <button class="boton" type="button" onclick="prepararProducto('nuevo')">Nuevo producto</button>
+                    <button class="boton boton-secundario" type="button" onclick="prepararProducto('CN001')">Editar CN001</button>
+                    <button class="boton boton-secundario" type="button" onclick="prepararProducto('PL001')">Editar PL001</button>
+                    <button class="boton boton-secundario" type="button" onclick="prepararProducto('EV001')">Editar EV001</button>
+                </div>
+            </section>
+
+            <!-- EDITOR DE PRODUCTOS: carga ejemplos o deja el formulario vacío. Revisar datos
+                 valida los campos; no modifica la tabla ni el catálogo. -->
+            <section class="panel-formulario oculto" id="panelEditorProducto">
+                <h2 id="tituloEditorProducto">Nuevo producto</h2>
+                <p class="nota">Simulación: revisa los datos, pero no agrega ni guarda productos.</p>
+                <form id="formProducto" onsubmit="validarProducto(); return false;" novalidate>
+                    <div class="fila-formulario">
+                        <label for="codigoProducto">Código</label>
+                        <input type="text" id="codigoProducto"  required oninput="validarCampoProducto('codigo')" onblur="validarCampoProducto('codigo')">
+                        <p class="error" id="errorCodigoProducto"></p>
+                    </div>
+                    <div class="fila-formulario">
+                        <label for="nombreProducto">Nombre</label>
+                        <input type="text" id="nombreProducto" maxlength="100" required oninput="validarCampoProducto('nombre')" onblur="validarCampoProducto('nombre')">
+                        <p class="error" id="errorNombreProducto"></p>
+                    </div>
+                    <div class="fila-formulario">
+                        <label for="precioProducto">Precio</label>
+                        <input type="number" id="precioProducto" min="0" step="any" required oninput="validarCampoProducto('precio')" onblur="validarCampoProducto('precio')">
+                        <p class="error" id="errorPrecioProducto"></p>
+                    </div>
+                    <div class="fila-formulario">
+                        <label for="stockProducto">Stock</label>
+                        <input type="number" id="stockProducto" min="0" step="1" required oninput="validarCampoProducto('stock')" onblur="validarCampoProducto('stock')">
+                        <p class="error" id="errorStockProducto"></p>
+                    </div>
+                    <div class="fila-formulario">
+                        <label for="categoriaProducto">Categoría</label>
+                        <select id="categoriaProducto" required onchange="validarCampoProducto('categoria')" onblur="validarCampoProducto('categoria')">
+                            <option value="">Selecciona una categoría</option>
+                            <option value="Consulta">Consulta</option>
+                            <option value="Plan">Plan especializado</option>
+                            <option value="Evaluación">Evaluación</option>
+                            <option value="Taller">Taller grupal</option>
+                        </select>
+                        <p class="error" id="errorCategoriaProducto"></p>
+                    </div>
+                    <button class="boton" type="submit">Revisar datos</button>
+                    <button class="boton boton-secundario" type="button" onclick="mostrarPanel('productos')">Volver al listado</button>
+                    <p class="resultado" id="resultadoProducto"></p>
+                </form>
+            </section>
+
+            <!-- USUARIOS: ejemplos ficticios visibles solo para el administrador. Revisar la
+                 edición no crea cuentas ni cambia los accesos de prueba. -->
+            <section id="panelUsuarios" class="oculto">
+                <h2>Usuarios</h2>
+                <p class="nota">Personas ficticias. Este listado no es una base de datos.</p>
+                <div class="tabla-contenedor">
+                    <table>
+                        <caption>Ejemplos de los tres perfiles</caption>
+                        <thead><tr><th>Nombre</th><th>Correo</th><th>Perfil</th><th>Acción</th></tr></thead>
+                        <tbody>
+                            <tr><td>Camila Soto</td><td>admin@duoc.cl</td><td>Administrador</td><td><button type="button" class="boton boton-secundario" onclick="prepararUsuario('admin')">Editar</button></td></tr>
+                            <tr><td>Diego Rojas</td><td>vendedor@duoc.cl</td><td>Vendedor</td><td><button type="button" class="boton boton-secundario" onclick="prepararUsuario('vendedor')">Editar</button></td></tr>
+                            <tr><td>Andrea Muñoz</td><td>cliente@gmail.com</td><td>Cliente</td><td><button type="button" class="boton boton-secundario" onclick="prepararUsuario('cliente')">Editar</button></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="accion"><button class="boton" type="button" onclick="prepararUsuario('nuevo')">Nuevo usuario</button></p>
+            </section>
+
+            <section class="panel-formulario oculto" id="panelEditorUsuario">
+                <h2 id="tituloEditorUsuario">Nuevo usuario</h2>
+                <p class="nota">Formulario básico de demostración. No crea una cuenta ni cambia los permisos de acceso.</p>
+                <form id="formUsuario" onsubmit="validarUsuario(); return false;" novalidate>
+                    <div class="fila-formulario">
+                        <label for="nombreUsuario">Nombre</label>
+                        <input type="text" id="nombreUsuario" maxlength="50" required oninput="validarCampoUsuario('nombre')" onblur="validarCampoUsuario('nombre')">
+                        <p class="error" id="errorNombreUsuario"></p>
+                    </div>
+                    <div class="fila-formulario">
+                        <label for="apellidosUsuario">Apellidos</label>
+                        <input type="text" id="apellidosUsuario" maxlength="100" required oninput="validarCampoUsuario('apellidos')" onblur="validarCampoUsuario('apellidos')">
+                        <p class="error" id="errorApellidosUsuario"></p>
+                    </div>
+                    <div class="fila-formulario">
+                        <label for="correoUsuario">Correo</label>
+                        <input type="email" id="correoUsuario" maxlength="100" required oninput="validarCampoUsuario('correo')" onblur="validarCampoUsuario('correo')">
+                        <p class="error" id="errorCorreoUsuario"></p>
+                    </div>
+                    <div class="fila-formulario">
+                        <label for="perfilUsuario">Perfil</label>
+                        <select id="perfilUsuario" required onchange="validarCampoUsuario('perfil')" onblur="validarCampoUsuario('perfil')">
+                            <option value="">Selecciona un perfil</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Vendedor">Vendedor</option>
+                            <option value="Cliente">Cliente</option>
+                        </select>
+                        <p class="error" id="errorPerfilUsuario"></p>
+                    </div>
+                    <button class="boton" type="submit">Revisar datos</button>
+                    <button class="boton boton-secundario" type="button" onclick="mostrarPanel('usuarios')">Volver al listado</button>
+                    <p class="resultado" id="resultadoUsuario"></p>
+                </form>
+            </section>
+
+            <!-- SOLICITUDES: administrador y vendedor solo consultan ejemplos escritos en HTML.
+                 Los enlaces # llevan al detalle de la misma sección, sin crear otra página. -->
+            <section id="panelSolicitudes" class="oculto">
+                <h2>Solicitudes</h2>
+                <p class="nota">Ejemplos ficticios. No provienen del formulario Solicitar hora ni representan reservas reales.</p>
+                <div class="tabla-contenedor">
+                    <table>
+                        <caption>Solicitudes de ejemplo</caption>
+                        <thead><tr><th>Código</th><th>Servicio</th><th>Estado</th><th>Detalle</th></tr></thead>
+                        <tbody>
+                            <tr><td>S001</td><td>Primera consulta</td><td>Pendiente</td><td><a href="#solicitud001">Ver detalle</a></td></tr>
+                            <tr><td>S002</td><td>Evaluación</td><td>Pendiente</td><td><a href="#solicitud002">Ver detalle</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <article class="destacado detalle-solicitud" id="solicitud001">
+                    <h3>S001 · Primera consulta</h3>
+                    <p>Paciente de ejemplo: Andrea Muñoz. Jornada preferida: mañana.</p>
+                    <p>Motivo: solicitar información sobre una primera atención. Estado: pendiente de revisión.</p>
+                </article>
+                <article class="destacado detalle-solicitud" id="solicitud002">
+                    <h3>S002 · Evaluación</h3>
+                    <p>Paciente de ejemplo: Tomás Pérez. Jornada preferida: tarde.</p>
+                    <p>Motivo: consultar por una evaluación nutricional. Estado: pendiente de revisión.</p>
+                </article>
+            </section>
+
+            <!-- CLIENTE: ve enlaces al sitio público, sin las herramientas de los otros roles. -->
+            <section class="destacado oculto" id="panelCliente">
+                <h2>Bienvenido a NutriVida</h2>
+                <p>Puedes revisar nuestras consultas y planes o completar los formularios de demostración.</p>
+                <p><a href="index.html">Ir al inicio</a> · <a href="productos.html">Ver catálogo</a> · <a href="blog.html">Leer el blog</a></p>
+                <p><a href="contacto.html">Contacto</a> · <a href="solicitar-hora.html">Solicitar hora</a></p>
+                <p class="nota">Al recargar esta página, deberás ingresar nuevamente para probar un perfil.</p>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="contenedor">
+            <p class="marca-pie">NutriVida</p>
+            <p>Proyecto académico DSY1104 · Christopher Villa y Bárbara Tolorza</p>
+            <p><a href="index.html">Volver al sitio</a></p>
+        </div>
+    </footer>
+    <script src="../js/funciones.js"></script>
+</body>
+</html>
