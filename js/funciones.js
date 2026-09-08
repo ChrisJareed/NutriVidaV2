@@ -397,3 +397,43 @@ function cerrarAcceso() {
     window.location.reload();
 }
 
+/* EDICIÓN DE PRODUCTOS: reset deja los campos vacíos y limpia la selección anterior.
+   Para editar, se cargan ejemplos fijos. Los valores de stock también son ficticios.
+   Revisar datos usa validarProducto; nunca escribe en una base de datos ni en el catálogo. */
+function prepararProducto(codigo) {
+    if (rolActual != "Administrador") { return false; }
+    document.getElementById("formProducto").reset();
+    document.getElementById("errorCodigoProducto").innerHTML = "";
+    document.getElementById("errorNombreProducto").innerHTML = "";
+    document.getElementById("errorPrecioProducto").innerHTML = "";
+    document.getElementById("errorStockProducto").innerHTML = "";
+    document.getElementById("errorCategoriaProducto").innerHTML = "";
+    document.getElementById("resultadoProducto").innerHTML = "";
+    document.getElementById("tituloEditorProducto").innerHTML = "Nuevo producto";
+
+    if (codigo == "CN001") {
+        document.getElementById("nombreProducto").value = "Primera consulta nutricional";
+        document.getElementById("precioProducto").value = "35000";
+        document.getElementById("stockProducto").value = "10";
+        document.getElementById("categoriaProducto").value = "Consulta";
+    } else if (codigo == "PL001") {
+        document.getElementById("nombreProducto").value = "Plan pérdida de peso (1 mes)";
+        document.getElementById("precioProducto").value = "65000";
+        document.getElementById("stockProducto").value = "5";
+        document.getElementById("categoriaProducto").value = "Plan";
+    } else if (codigo == "EV001") {
+        document.getElementById("nombreProducto").value = "Antropometría completa";
+        document.getElementById("precioProducto").value = "18000";
+        document.getElementById("stockProducto").value = "8";
+        document.getElementById("categoriaProducto").value = "Evaluación";
+    } else if (codigo != "nuevo") {
+        return false;
+    }
+    if (codigo != "nuevo") {
+        document.getElementById("codigoProducto").value = codigo;
+        document.getElementById("tituloEditorProducto").innerHTML = "Editar producto " + codigo;
+    }
+    ocultarPaneles();
+    document.getElementById("panelEditorProducto").style.display = "block";
+    return true;
+}
