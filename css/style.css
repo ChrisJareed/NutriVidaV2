@@ -127,3 +127,46 @@ caption { padding: 0 0 14px; text-align: left; font-size: 14px; color: #4f6155; 
 th, td { border: 1px solid #d6e0d7; text-align: left; padding: 15px; vertical-align: top; }
 th { background-color: #edf3e9; color: #164b3c; }
 
+/* Artículos completos del Blog: limita el ancho de lectura y separa cada publicación.
+   Las fotos y los subtítulos comparten tamaños y espacios para mantener la misma presentación. */
+.articulo-blog { max-width: 800px; margin: 0 auto 55px; padding-bottom: 36px; border-bottom: 1px solid #d6e0d7; }
+
+.imagen-articulo { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; margin-bottom: 24px; }
+.articulo-blog h3 { margin-top: 30px; color: #164b3c; }
+
+/* Formularios de Contacto y Solicitar hora: ordena etiquetas, campos y mensajes de revisión.
+   Los errores se ven rojos y el resultado verde; se reserva espacio para que los avisos no muevan el botón. */
+.panel-formulario { max-width: 720px; margin: 0 auto 45px; padding: 32px; border: 1px solid #d6e0d7; border-radius: 10px; box-sizing: border-box; }
+
+.fila-formulario { margin-bottom: 12px; }
+
+label { display: block; font-weight: bold; margin-bottom: 7px; }
+
+input, select, textarea { width: 100%; box-sizing: border-box; padding: 12px; border: 1px solid #9bae9f; border-radius: 5px; background-color: #ffffff; color: #273b32; font-family: Arial, Helvetica, sans-serif; font-size: 16px; }
+
+textarea { min-height: 140px; resize: vertical; }
+
+input:focus, select:focus, textarea:focus { outline: 2px solid #557943; outline-offset: 2px; }
+
+.ayuda-formulario { margin: 5px 0; font-size: 13px; color: #526348; }
+
+.error { min-height: 3.2em; margin: 5px 0 0; color: #a42f2f; font-size: 13px; line-height: 1.6; }
+
+.resultado { color: #19583b; font-weight: bold; margin-top: 20px; }
+.oculto { display: none; }
+
+/* Acceso por perfiles: separa los botones del menú y los detalles de solicitudes.
+   La clase oculto es el estado inicial; JavaScript cambia display para mostrar cada bloque. */
+.menu-gestion { margin: 24px 0; }
+.menu-gestion .boton { margin: 0 8px 10px 0; }
+.cuentas-prueba { padding-left: 20px; overflow-wrap: break-word; }
+.detalle-solicitud { margin-top: 25px; }
+
+/* Pie común de las páginas: muestra la marca, los enlaces y los créditos sobre un fondo claro.
+   Una línea separa los nombres de los integrantes del resto del contenido. */
+footer { background-color: #f0f4ed; border-top: 1px solid #d6e0d7; padding: 35px 0 20px; }
+
+.marca-pie { font-size: 27px; font-weight: bold; color: #164b3c; }
+.creditos { font-size: 13px; margin-top: 25px; border-top: 1px solid #d6e0d7; padding-top: 15px; }
+
+
