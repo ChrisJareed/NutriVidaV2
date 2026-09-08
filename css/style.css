@@ -84,3 +84,46 @@ nav a.actual { font-weight: bold; }
 .panel-verde .etiqueta, .panel-verde .nota { color: #edf3e9; }
 
 .nota { font-size: 14px; color: #526348; }
+
+/* Tarjetas de Inicio y del catálogo: organizan fotos, títulos, descripciones y precios en dos columnas.
+   Las alturas reservadas alinean sus textos; los enlaces de sección sirven de índice dentro de la página. */
+.tarjetas { margin: 0 -1%; }
+
+.tarjeta { display: inline-block; width: 47.5%; margin: 0 1% 28px; vertical-align: top; border: 1px solid #d6e0d7; border-radius: 9px; overflow: hidden; box-sizing: border-box; }
+
+.tarjeta img { display: block; width: 100%; height: 240px; object-fit: cover; }
+
+.contenido-tarjeta { padding: 26px; }
+
+.tarjeta .etiqueta { font-size: 11px; min-height: 36px; margin-bottom: 10px; }
+.tarjeta h3 { min-height: 58px; color: #164b3c; margin: 0 0 18px; }
+
+.descripcion { min-height: 105px; color: #4f6155; }
+
+.precio { border-top: 1px solid #e3e9df; padding-top: 18px; font-size: 27px; font-weight: bold; color: #164b3c; }
+
+.contenido-tarjeta p:last-child { margin-bottom: 0; }
+
+.enlaces-seccion { padding: 15px 0; border-bottom: 1px solid #d6e0d7; margin-bottom: 30px; }
+.enlaces-seccion a { display: inline-block; margin: 7px 24px 7px 0; }
+
+/* Nosotros coloca la fotografía junto al texto de presentación.
+   Servicios muestra cada área en un bloque con contorno y borde amarillo a la izquierda. */
+.presentacion-clinica { padding-top: 12px; }
+
+.imagen-clinica { display: inline-block; width: 42%; height: 380px; object-fit: cover; border-radius: 55px 10px 10px 10px; vertical-align: top; }
+.texto-clinica { display: inline-block; width: 51%; margin-left: 5%; vertical-align: top; }
+
+.servicio { padding: 28px; margin-bottom: 25px; border: 1px solid #d6e0d7; border-left: 5px solid #e4b849; border-radius: 5px; }
+.servicio h2 { font-size: 30px; }
+
+/* Tabla de información: diferencia los encabezados y separa las celdas con bordes.
+   Si no cabe en una pantalla pequeña, su contenedor permite desplazarla horizontalmente. */
+.tabla-contenedor { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+
+caption { padding: 0 0 14px; text-align: left; font-size: 14px; color: #4f6155; }
+
+th, td { border: 1px solid #d6e0d7; text-align: left; padding: 15px; vertical-align: top; }
+th { background-color: #edf3e9; color: #164b3c; }
+
