@@ -281,3 +281,119 @@ function validarProducto() {
     }
     return valido;
 }
+
+/* ACCESO POR ROLES: las tres cuentas son ejemplos públicos, no credenciales reales.
+   rolActual existe solo en esta página: al recargar vuelve a quedar vacío.
+   Cambiar la vista con JavaScript no reemplaza una protección de servidor. */
+var rolActual = "";
+
+function validarCampoAcceso(campo) {
+    var valido = true;
+    document.getElementById("errorAcceso").innerHTML = "";
+    if (campo == "correo") {
+        var correo = document.getElementById("correoAcceso").value;
+        document.getElementById("errorCorreoAcceso").innerHTML = "";
+        if (!correoValido(correo)) {
+            document.getElementById("errorCorreoAcceso").innerHTML = "Usa @duoc.cl, @profesor.duoc.cl o @gmail.com (máx. 100).";
+            valido = false;
+        }
+    }
+    if (campo == "clave") {
+        var clave = document.getElementById("claveAcceso").value;
+        document.getElementById("errorClaveAcceso").innerHTML = "";
+        if (!tieneTexto(clave) || clave.length < 4 || clave.length > 10) {
+            document.getElementById("errorClaveAcceso").innerHTML = "Escribe una contraseña de entre 4 y 10 caracteres.";
+            valido = false;
+        }
+    }
+    return valido;
+}
+
+/* Primero revisa el formato. Después compara el correo y la contraseña de prueba.
+   El rol se asigna con if; no se toma de un selector de perfil. */
+function validarAcceso() {
+    if (rolActual != "") { return false; }
+    var valido = true;
+    if (!validarCampoAcceso("correo")) { valido = false; }
+    if (!validarCampoAcceso("clave")) { valido = false; }
+    if (!valido) { return false; }
+var correo = document.getElementById("correoAcceso").value.toLowerCase();
+    var clave = document.getElementById("claveAcceso").value;
+    if (clave == "nutrivida") {
+        if (correo == "admin@duoc.cl") { rolActual = "Administrador"; }
+        else if (correo == "vendedor@duoc.cl") { rolActual = "Vendedor"; }
+        else if (correo == "cliente@gmail.com") { rolActual = "Cliente"; }
+    }
+    if (rolActual == "") {
+        document.getElementById("errorAcceso").innerHTML = "Correo o contraseña incorrectos. Revisa las cuentas de prueba.";
+        return false;
+    }
+
+    document.getElementById("claveAcceso").value = "";
+    document.getElementById("panelAcceso").style.display = "none";
+    document.getElementById("zonaAcceso").style.display = "block";
+    document.getElementById("resultadoAcceso").innerHTML = "Perfil: " + rolActual + " · Acceso de demostración.";
+
+    if (rolActual == "Administrador" || rolActual == "Vendedor") {
+        document.getElementById("menuProductos").style.display = "inline-block";
+        document.getElementById("menuSolicitudes").style.display = "inline-block";
+        mostrarPanel("productos");
+    } else {
+        mostrarPanel("cliente");
+    }
+    if (rolActual == "Administrador") {
+        document.getElementById("menuUsuarios").style.display = "inline-block";
+        document.getElementById("accionesProductos").style.display = "block";
+    }
+    return true;
+}
+
+/* NAVEGACIÓN INTERNA: oculta las secciones antes de mostrar la elegida.
+   Se comprueba el rol también en las funciones, no solo en la visibilidad de los botones.
+   Esto ordena la simulación, pero no impide que alguien altere el código en su navegador. */
+function ocultarPaneles() {
+    document.getElementById("panelProductos").style.display = "none";
+    document.getElementById("panelUsuarios").style.display = "none";
+    document.getElementById("panelSolicitudes").style.display = "none";
+    document.getElementById("panelEditorProducto").style.display = "none";
+    document.getElementById("panelEditorUsuario").style.display = "none";
+    document.getElementById("panelCliente").style.display = "none";
+}
+
+function mostrarPanel(panel) {
+    if (rolActual == "") { return false; }
+    if (panel == "usuarios" && rolActual == "Administrador") {
+        ocultarPaneles();
+        document.getElementById("panelUsuarios").style.display = "block";
+        return true;
+    }
+    if (rolActual == "Administrador" || rolActual == "Vendedor") {
+        if (panel == "productos") {
+            ocultarPaneles();
+            document.getElementById("panelProductos").style.display = "block";
+            return true;
+        }
+        if (panel == "solicitudes") {
+            ocultarPaneles();
+            document.getElementById("panelSolicitudes").style.display = "block";
+            return true;
+        }
+    }
+    if (panel == "cliente" && rolActual == "Cliente") {
+        ocultarPaneles();
+        document.getElementById("panelCliente").style.display = "block";
+        return true;
+    }
+    return false;
+}
+
+/* SALIR: oculta todas las herramientas y vacía el rol. La recarga vuelve a leer el HTML
+   inicial, por eso también limpia formularios, mensajes y opciones de la cuenta anterior. */
+function cerrarAcceso() {
+    rolActual = "";
+    ocultarPaneles();
+    document.getElementById("zonaAcceso").style.display = "none";
+    document.getElementById("panelAcceso").style.display = "block";
+    window.location.reload();
+}
+
