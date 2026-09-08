@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- CONFIGURACIÓN DE LA PÁGINA
+     Reúne la codificación para tildes y ñ, el ajuste inicial de pantalla, el título y el icono de la pestaña.
+     Las ocho páginas cargan ../css/style.css: ../ sale de la carpeta HTML para buscar los estilos compartidos.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | NutriVida</title>
+    <link rel="icon" href="../imagenes/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- FRANJA SUPERIOR
+         Es el texto que se ve sobre el encabezado. La clase franja le da el fondo verde y centra su contenido.
+    -->
+    <p class="franja">TEMUCO · NUTRICIÓN Y BIENESTAR DESDE 2016</p>
+    <!-- ENCABEZADO DE NUTRIVIDA
+         Agrupa el logo, el nombre y la descripción de la clínica. Pulsar la marca lleva a Inicio.
+         contenedor alinea el bloque; marca y bajada permiten dar distintos tamaños al nombre y a la descripción.
+    -->
+    <header>
+        <div class="contenedor">
+            <a class="enlace-marca" href="index.html">
+                <img class="logo" src="../imagenes/logo.svg" alt="">
+                <span class="marca">NutriVida</span>
+            </a>
+            <p class="bajada">Clínica de nutrición · Temuco</p>
+        </div>
+    </header>
+    <!-- MENÚ ENTRE PÁGINAS
+         Los enlaces abren los HTML de esta misma carpeta. El texto de cada enlace es su nombre visible en el menú.
+         Solo el enlace de la página abierta tiene actual: el CSS lo destaca con negrita y una línea amarilla.
+    -->
+    <nav>
+        <div class="contenedor">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="productos.html" class="actual">Productos</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="solicitar-hora.html">Solicitar hora</a>
+        </div>
+    </nav>
+    <!-- CONTENIDO PRINCIPAL
+         Aquí está la información propia de esta página. contenedor limita su ancho y lo centra con el resto del sitio.
+         El h1 presenta el tema principal; los h2 y h3 organizan las secciones y sus contenidos.
+    -->
+    <main class="contenedor">
+        <!-- PRESENTACIÓN DE LA SECCIÓN
+             Se ve debajo del menú: una etiqueta pequeña, el título principal y una breve descripción de lo que contiene la página.
+        -->
+        <section class="encabezado-pagina">
+            <p class="etiqueta">CONSULTAS Y PLANES</p>
+            <h1>Un plan para cada etapa.</h1>
+            <p>Conoce las opciones del catálogo y revisa qué incluye cada atención.</p>
+        </section>
+        <p class="nota">Catálogo de demostración. Los precios y las duraciones son referenciales.</p>
+        <!-- ÍNDICE DENTRO DE ESTA PÁGINA
+             Los enlaces con # llevan al bloque cuyo id coincide. Permiten recorrer el contenido sin abrir otro archivo ni usar JavaScript.
+        -->
+        <div class="enlaces-seccion">
+            <a href="#consultas">Consultas</a>
+            <a href="#planes">Planes especializados</a>
+            <a href="#evaluaciones">Evaluaciones</a>
+            <a href="#talleres">Talleres grupales</a>
+        </div>
+        <!-- CATÁLOGO: CONSULTAS
+             Agrupa las consultas iniciales y de seguimiento. El enlace #consultas del índice baja hasta esta sección.
+        -->
+        <section id="consultas">
+            <h2>Consultas nutricionales</h2>
+            <div class="tarjetas">
+                <!-- ESTRUCTURA REPETIDA DEL PRODUCTO
+                     Las 18 tarjetas siguen este bloque: imagen local, modalidad y duración, nombre, descripción, precio y enlace al formulario.
+                     El id identifica la tarjeta para los enlaces como productos.html#cn001; no se muestra como texto.
+                     El catálogo está escrito en HTML y no necesita JavaScript para mostrar sus productos.
+                -->
+                <article class="tarjeta" id="cn001">
+                    <img src="../imagenes/metabolica.jpg" alt="Plato con huevo, palta, tomates y verduras variadas">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">Presencial · 50 min</p>
+                        <h3>Primera consulta nutricional</h3>
+                        <p class="descripcion">Evaluación inicial: anamnesis, antropometría completa y diseño del primer plan alimenticio.</p>
+                        <p class="precio">$35.000</p>
+                        <p class="accion"><a class="boton" href="solicitar-hora.html">Solicitar hora</a></p>
+                    </div>
+                </article>
+                <article class="tarjeta" id="cn002">
+                    <img src="../imagenes/metabolica.jpg" alt="Plato con huevo, palta, tomates y verduras variadas">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">Presencial · 30 min</p>
+                        <h3>Control nutricional (seguimiento)</h3>
+                        <p class="descripcion">Seguimiento mensual: medición de indicadores y ajuste del plan vigente.</p>
+                        <p class="precio">$25.000</p>
+                        <p class="accion"><a class="boton" href="solicitar-hora.html">Solicitar hora</a></p>
+                    </div>
+                </article>
+                <article class="tarjeta" id="cn003">
+                    <img src="../imagenes/metabolica.jpg" alt="Plato con huevo, palta, tomates y verduras variadas">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">Presencial · 30 min</p>
+                        <h3>Control nutricional quincenal</h3>
+                        <p class="descripcion">Seguimiento intensivo cada 15 días. Recomendado en los primeros 2 meses.</p>
+                        <p class="precio">$22.000</p>
+                        <p class="accion"><a class="boton" href="solicitar-hora.html">Solicitar hora</a></p>
+                    </div>
+                </article>
+                <article class="tarjeta" id="cn004">
+                    <img src="../imagenes/metabolica.jpg" alt="Plato con huevo, palta, tomates y verduras variadas">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">Online (video) · 30 min</p>
+                        <h3>Teleconsulta nutricional</h3>
+                        <p class="descripcion">Consulta de seguimiento vía videollamada. Requiere contar con consulta presencial previa.</p>
+                        <p class="precio">$20.000</p>
+                        <p class="accion"><a class="boton" href="solicitar-hora.html">Solicitar hora</a></p>
+                    </div>
+                </article>
+                <article class="tarjeta" id="cn005">
+                    <img src="../imagenes/metabolica.jpg" alt="Plato con huevo, palta, tomates y verduras variadas">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">Presencial · 30 min</p>
+                        <h3>Consulta de urgencia / reagendada</h3>
+                        <p class="descripcion">Para pacientes que requieren atención fuera de su control habitual.</p>
+                        <p class="precio">$28.000</p>
+                        <p class="accion"><a class="boton" href="solicitar-hora.html">Solicitar hora</a></p>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- CATÁLOGO: PLANES ESPECIALIZADOS
+             Reúne los planes por objetivo. Sus detalles y precios están escritos en estas tarjetas.
+        -->
+        <section id="planes">
+            <h2>Planes especializados</h2>
+            <div class="tarjetas">
+                <article class="tarjeta" id="pl001">
+                    <img src="../imagenes/control-peso.jpg" alt="Ensalada de hojas verdes con palta, granada y semillas">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">Presencial · 1 mes</p>
+                        <h3>Plan pérdida de peso (1 mes)</h3>
+                        <p class="descripcion">Incluye primera consulta + 1 control quincenal + plan alimenticio personalizado + seguimiento por WhatsApp.</p>
+                        <p class="precio">$65.000</p>
+                        <p class="accion"><a class="boton" href="solicitar-hora.html">Solicitar hora</a></p>
+                    </div>
+                </article>
+                <article class="tarjeta" id="pl002">
+                    <img src="../imagenes/control-peso.jpg" alt="Ensalada de hojas verdes con palta, granada y semillas">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">Presencial · 3 meses</p>
+                        <h3>Plan pérdida de peso (3 meses)</h3>
+                        <p class="descripcion">Incluye primera consulta + 5 controles + 3 planes mensuales + seguimiento continuo.</p>
+                        <p class="precio">$170.000</p>
+                        <p class="accion"><a class="boton" href="solicitar-hora.html">Solicitar hora</a></p>
+                    </div>
+                </article>
+                <article class="tarjeta" id="pl003">
+                    <img src="../imagenes/control-peso.jpg" alt="Ensalada de hojas verdes con palta, granada y semillas">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">Presencial · 1 mes</p>
+                        <h3>Plan nutrición deportiva (1 mes)</h3>
+                        <p class="descripcion">Para deportistas y personas con actividad física frecuente. Cálculo de requerimientos energéticos y proteicos.</p>
+                        <p class="precio">$70.000</p>
+                        <p class="accion"><a class="boton" href="solicitar-hora.html">Solicitar hora</a></p>
+                    </div>
+                </article>
+                <article class="tarjeta" id="pl004">
+                    <img src="../imagenes/control-peso.jpg" alt="Ensalada de hojas verdes con palta, granada y semillas">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">Presencial · Duración no especificada</p>
+                        <h3>Plan control diabetes / hipertensión</h3>
+                        <p class="descripcion">Plan adaptado para patologías metabólicas. Coordinación con médico tratante si aplica.</p>
+                        <p class="precio">$75.000</p>
+                        <p class="accion"><a class="boton" href="solicitar-hora.html">Solicitar hora</a></p>
+                    </div>
+                </article>
+                <article class="tarjeta" id="pl005">
+                    <img src="../imagenes/control-peso.jpg" alt="Ensalada de hojas verdes con palta, granada y semillas">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">Presencial · Duración no especificada</p>
+                        <h3>Plan alimentación vegetariana/vegana</h3>
+                        <p class="descripcion">Diseñado para garantizar aporte adecuado de proteínas, hierro, vitamina B12 y calcio sin productos animales.</p>
+                        <p class="precio">$68.000</p>
+                        <p class="accion"><a class="boton" href="solicitar-hora.html">Solicitar hora</a></p>
+                    </div>
+                </article>
+                <article class="tarjeta" id="pl006">
+                    <img src="../imagenes/control-peso.jpg" alt="Ensalada de hojas verdes con palta, granada y semillas">
+                    <div class="contenido-tarjeta">
+                        <p class="etiqueta">Presencial · Duración no especificada</p>
+                        <h3>Plan alimentación infantil (2-12 años)</h3>
+                        <p class="descripcion">Evaluación nutricional pediátrica y diseño de plan adaptado a la etapa de desarrollo del niño.</p>
+                        <p class="precio">$65.000</p>
+                        <p class="accion"><a class="boton" href="solicitar-hora.html">Solicitar hora</a></p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <!-- PIE DE PÁGINA
+         Cierra el sitio con la marca, enlaces al catálogo, blog y contacto, y los nombres de Christopher y Bárbara.
+         Se repite en las ocho páginas y comparte sus estilos mediante style.css.
+    -->
+    <footer>
+        <div class="contenedor">
+            <p class="marca-pie">NutriVida</p>
+            <p>Asesoría nutricional personalizada · Temuco</p>
+            <p><a href="productos.html">Consultas y planes</a> · <a href="blog.html">Nuestro blog</a> · <a href="contacto.html">Contacto</a> · <a href="administracion.html">Acceso</a></p>
+            <p class="creditos">Proyecto académico DSY1104 · Christopher Villa y Bárbara Tolorza</p>
+        </div>
+    </footer>
+</body>
+</html>
