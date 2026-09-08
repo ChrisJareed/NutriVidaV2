@@ -44,3 +44,43 @@ nav a { display: inline-block; padding: 9px 0; margin-right: 25px; font-size: 15
 
 nav a:hover, nav a.actual { border-bottom-color: #d9b643; color: #164b3c; }
 nav a.actual { font-weight: bold; }
+
+
+/* Portada de Inicio: coloca la presentación y la fotografía una al lado de la otra.
+   También define el título grande, las esquinas de la foto y las etiquetas pequeñas de las secciones. */
+.portada { padding: 38px 0; margin-bottom: 0; }
+
+.texto-portada { display: inline-block; width: 46%; vertical-align: middle; margin-right: 5%; }
+
+.portada h1 { font-size: 54px; color: #164b3c; }
+
+.imagen-portada { display: inline-block; width: 47%; height: 520px; object-fit: cover; vertical-align: middle; border-radius: 90px 12px 12px 12px; }
+
+.etiqueta { font-size: 12px; font-weight: bold; letter-spacing: 1.5px; color: #50694e; margin-bottom: 16px; }
+
+.accion { margin-top: 24px; }
+
+/* Aspecto de los botones y enlaces principales, como Solicitar hora.
+   Las variantes cambian sus colores; el destino o la acción se define en el HTML. */
+.boton { display: inline-block; padding: 12px 19px; border: 1px solid #164b3c; border-radius: 5px; background-color: #164b3c; color: #ffffff; font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bold; line-height: 1.5; text-decoration: none; cursor: pointer; }
+
+.boton:hover { background-color: #2a654a; color: #ffffff; }
+.boton-secundario { background-color: #ffffff; color: #164b3c; }
+.boton-claro { background-color: #d8ee88; color: #164b3c; border-color: #d8ee88; }
+
+/* Bloques informativos: datos de la clínica, presentación de cada página y avisos destacados.
+   Los fondos, bordes y espacios distinguen la información principal de las notas complementarias. */
+.datos-clinica { border-top: 1px solid #d6e0d7; border-bottom: 1px solid #d6e0d7; padding: 20px 0; text-align: center; }
+
+.datos-clinica p { display: inline-block; width: 32%; margin: 0; vertical-align: top; font-size: 14px; }
+.datos-clinica strong { color: #164b3c; font-size: 18px; }
+
+.encabezado-pagina { padding: 40px 0 24px; border-bottom: 1px solid #d6e0d7; margin-bottom: 35px; }
+.encabezado-pagina p { max-width: 760px; }
+
+.destacado { padding: 30px; background-color: #f0f6f2; border-left: 5px solid #e4b849; }
+
+.panel-verde { padding: 38px; border-radius: 12px; background-color: #164b3c; color: #ffffff; }
+.panel-verde .etiqueta, .panel-verde .nota { color: #edf3e9; }
+
+.nota { font-size: 14px; color: #526348; }
