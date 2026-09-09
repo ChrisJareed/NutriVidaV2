@@ -38,6 +38,31 @@ function nombreValido(nombre) {
     return true;
 }
 
+/* Comprueba que la fecha seleccionada sea posterior al día actual. */
+function fechaFutura(fecha) {
+    if (fecha == "") {
+        return false;
+    }
+
+    var hoy = new Date();
+    var anio = hoy.getFullYear();
+    var mes = hoy.getMonth() + 1;
+    var dia = hoy.getDate();
+
+    if (mes < 10) {
+        mes = "0" + mes;
+    }
+
+    if (dia < 10) {
+        dia = "0" + dia;
+    }
+
+    var fechaHoy = anio + "-" + mes + "-" + dia;
+
+    return fecha > fechaHoy;
+}
+
+
 /* Comprueba el formato del correo, el máximo de 100 caracteres y los dominios admitidos:
    duoc.cl, profesor.duoc.cl o gmail.com. No comprueba si la dirección existe. */
 function correoValido(correo) {
