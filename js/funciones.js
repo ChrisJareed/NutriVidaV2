@@ -11,6 +11,32 @@ function tieneTexto(texto) {
     }
     return false;
 }
+/* Comprueba que el nombre tenga solamente letras, espacios o guiones.
+   También acepta tildes y la letra ñ. */
+function nombreValido(nombre) {
+    var letras = "abcdefghijklmnñopqrstuvwxyzáéíóúü -";
+
+    if (!tieneTexto(nombre)) {
+        return false;
+    }
+
+    for (var i = 0; i < nombre.length; i++) {
+        var caracter = nombre[i].toLowerCase();
+        var permitido = false;
+
+        for (var j = 0; j < letras.length; j++) {
+            if (caracter == letras[j]) {
+                permitido = true;
+            }
+        }
+
+        if (!permitido) {
+            return false;
+        }
+    }
+
+    return true;
+}
 
 /* Comprueba el formato del correo, el máximo de 100 caracteres y los dominios admitidos:
    duoc.cl, profesor.duoc.cl o gmail.com. No comprueba si la dirección existe. */
