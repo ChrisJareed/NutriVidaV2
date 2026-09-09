@@ -537,14 +537,15 @@ function validarCampoUsuario(campo) {
     var valido = true;
     document.getElementById("resultadoUsuario").innerHTML = "";
     if (campo == "nombre") {
-        var nombre = document.getElementById("nombreUsuario").value;
-        document.getElementById("errorNombreUsuario").innerHTML =
-    "Escribe un nombre usando solo letras (máximo 50 caracteres).";
+    var nombre = document.getElementById("nombreUsuario").value;
+    document.getElementById("errorNombreUsuario").innerHTML = "";
 
-        if (!nombreValido(nombre) || nombre.length > 50) {
-            document.getElementById("errorNombreUsuario").innerHTML = "Escribe un nombre de hasta 50 caracteres.";
-            valido = false;
-        }
+    if (!nombreValido(nombre) || nombre.length > 50) {
+        document.getElementById("errorNombreUsuario").innerHTML =
+        "Escribe un nombre de hasta 50 caracteres.";
+        valido = false;
+    }
+}
     }
     if (campo == "apellidos") {
         var apellidos = document.getElementById("apellidosUsuario").value;
