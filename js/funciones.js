@@ -513,16 +513,20 @@ function validarCampoUsuario(campo) {
     document.getElementById("resultadoUsuario").innerHTML = "";
     if (campo == "nombre") {
         var nombre = document.getElementById("nombreUsuario").value;
-        document.getElementById("errorNombreUsuario").innerHTML = "";
-        if (!tieneTexto(nombre) || nombre.length > 50) {
+        document.getElementById("errorNombreUsuario").innerHTML =
+    "Escribe un nombre usando solo letras (máximo 50 caracteres).";
+
+        if (!nombreValido(nombre) || nombre.length > 50) {
             document.getElementById("errorNombreUsuario").innerHTML = "Escribe un nombre de hasta 50 caracteres.";
             valido = false;
         }
     }
     if (campo == "apellidos") {
         var apellidos = document.getElementById("apellidosUsuario").value;
-        document.getElementById("errorApellidosUsuario").innerHTML = "";
-        if (!tieneTexto(apellidos) || apellidos.length > 100) {
+        document.getElementById("errorApellidosUsuario").innerHTML =
+    "Escribe apellidos usando solo letras (máximo 100 caracteres).";
+
+        if (!nombreValido(apellidos) || apellidos.length > 100) {
             document.getElementById("errorApellidosUsuario").innerHTML = "Escribe los apellidos (máximo 100 caracteres).";
             valido = false;
         }
