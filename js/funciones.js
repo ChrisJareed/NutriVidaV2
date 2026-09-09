@@ -110,8 +110,10 @@ function validarCampoContacto(campo) {
     if (campo == "nombre") {
         var nombre = document.getElementById("nombreContacto").value;
         document.getElementById("errorNombreContacto").innerHTML = "";
-        if (!tieneTexto(nombre) || nombre.length > 100) {
-            document.getElementById("errorNombreContacto").innerHTML = "Escribe tu nombre (máximo 100 caracteres).";
+        if (!nombreValido(nombre) || nombre.length > 100) {
+            document.getElementById("errorNombreContacto").innerHTML =
+    "Escribe un nombre usando solo letras, espacios o guiones (máximo 100 caracteres).";
+
             valido = false;
         }
     }
