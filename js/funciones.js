@@ -177,8 +177,9 @@ function validarCampoHora(campo) {
     if (campo == "nombre") {
         var nombre = document.getElementById("nombreHora").value;
         document.getElementById("errorNombreHora").innerHTML = "";
-        if (!tieneTexto(nombre) || nombre.length > 100) {
-            document.getElementById("errorNombreHora").innerHTML = "Escribe tu nombre (máximo 100 caracteres).";
+        if (!nombreValido(nombre) || nombre.length > 100) {
+            document.getElementById("errorNombreHora").innerHTML = "Escribe un nombre usando solo letras, espacios o guiones (máximo 100 caracteres).";
+
             valido = false;
         }
     }
