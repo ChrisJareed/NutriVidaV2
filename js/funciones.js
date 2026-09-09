@@ -227,8 +227,8 @@ function validarCampoHora(campo) {
     if (campo == "fecha") {
         var fecha = document.getElementById("fechaHora").value;
         document.getElementById("errorFechaHora").innerHTML = "";
-        if (fecha == "") {
-            document.getElementById("errorFechaHora").innerHTML = "Selecciona una fecha preferida.";
+        if (!fechaFutura(fecha)) {
+            document.getElementById("errorFechaHora").innerHTML = "Selecciona una fecha futura.";
             valido = false;
         }
     }
