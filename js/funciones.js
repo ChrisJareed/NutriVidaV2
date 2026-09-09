@@ -548,16 +548,16 @@ function validarCampoUsuario(campo) {
     }
 }
     
-    if (campo == "apellidos") {
-        var apellidos = document.getElementById("apellidosUsuario").value;
-        document.getElementById("errorApellidosUsuario").innerHTML =
-    "Escribe apellidos usando solo letras (máximo 100 caracteres).";
+if (campo == "apellidos") {
+    var apellidos = document.getElementById("apellidosUsuario").value;
+    document.getElementById("errorApellidosUsuario").innerHTML = "";
 
-        if (!nombreValido(apellidos) || apellidos.length > 100) {
-            document.getElementById("errorApellidosUsuario").innerHTML = "Escribe los apellidos (máximo 100 caracteres).";
-            valido = false;
-        }
+    if (!nombreValido(apellidos) || apellidos.length > 100) {
+        document.getElementById("errorApellidosUsuario").innerHTML =
+        "Escribe los apellidos (máximo 100 caracteres).";
+        valido = false;
     }
+}
     if (campo == "correo") {
         var correo = document.getElementById("correoUsuario").value;
         document.getElementById("errorCorreoUsuario").innerHTML = "";
