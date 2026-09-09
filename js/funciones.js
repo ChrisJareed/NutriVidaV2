@@ -536,6 +536,7 @@ function validarCampoUsuario(campo) {
     if (rolActual != "Administrador") { return false; }
     var valido = true;
     document.getElementById("resultadoUsuario").innerHTML = "";
+    
     if (campo == "nombre") {
     var nombre = document.getElementById("nombreUsuario").value;
     document.getElementById("errorNombreUsuario").innerHTML = "";
@@ -546,7 +547,7 @@ function validarCampoUsuario(campo) {
         valido = false;
     }
 }
-    }
+    
     if (campo == "apellidos") {
         var apellidos = document.getElementById("apellidosUsuario").value;
         document.getElementById("errorApellidosUsuario").innerHTML =
